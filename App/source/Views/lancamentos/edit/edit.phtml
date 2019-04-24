@@ -1,0 +1,46 @@
+<div class="box-window">
+    <?php echo $this->formEdit->titulo ?>
+    <form action="<?php echo APP_PATH . '/lancamentos/save/' ?>" method="post">
+        <div class="form-row">
+            <?php echo $this->formEdit->id ?>
+            <div class="form-group col-md-12">
+                <?php echo $this->formEdit->centro_custo_id ?>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <?php echo $this->formEdit->data_lancamento ?>
+            </div>
+            <div class="form-group col-md-3">
+                <?php echo $this->formEdit->conta_id ?>
+            </div>
+            <div class="form-group col-md-3">
+                <?php echo $this->formEdit->tipo ?>
+            </div>
+            <div class="form-group col-md-3">
+                <?php echo $this->formEdit->valor ?>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <?php echo $this->formEdit->descricao ?>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <?php echo $this->formEdit->fluxo_id ?>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <?php echo $this->formEdit->btnSalvar ?>
+                <a href="<?php echo APP_PATH . '/lancamentos/' ?>"><?php echo $this->formEdit->btnFechar ?></a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+

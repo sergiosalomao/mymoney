@@ -1,0 +1,43 @@
+<div class="box-window-6">
+    <?php echo $this->formCreate->titulo ?>
+    <form id="form" action="<?php echo APP_PATH . '/usuarios/save/' ?>" method="post">
+        <div class="form-row">
+            <?php echo $this->formCreate->id ?>
+
+            <div class="form-group col-md-12">
+                <div class="form-group col-md-12">
+                    <?php echo $this->formCreate->nome ?>
+                </div>
+                <div class="form-group col-md-12">
+                    <?php echo $this->formCreate->email ?>
+                </div>
+                <div class="form-group col-md-12">
+                    <?php echo $this->formCreate->senha ?>
+                </div>
+                <div class="form-group col-md-12">
+                    <?php echo $this->formCreate->senha_confirma ?>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <?php echo $this->formCreate->btnSalvar ?>
+                <a href="<?php echo APP_PATH . '/usuarios/' ?>"><?php echo $this->formCreate->btnFechar ?></a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#form").submit(function () {
+
+        if ($("input[name='senha']").val() != $("input[name='senha_confirma']").val()){
+            alert('Senhas diferentes');
+            return false;
+        }
+
+
+
+    })
+
+</script>

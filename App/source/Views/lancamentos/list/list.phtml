@@ -1,0 +1,76 @@
+<div class="box-window">
+
+
+        <table id="tabela" class="table table-hover table-sm">
+            <thead>
+            <tr>
+                <th scope="col" style="width: 3%"><?php echo $this->translate("Id") ?></th>
+                <th scope="col" style="width: 10%"><?php echo $this->translate("Data") ?></th>
+                <th scope="col" style="width: 15%"><?php echo $this->translate("Centro Custo") ?></th>
+
+                <th scope="col" style="width: 10%"><?php echo $this->translate("Banco") ?></th>
+                <th scope="col" style="width: 10%"><?php echo $this->translate("Agencia") ?></th>
+                <th scope="col" style="width: 10%"><?php echo $this->translate("Conta") ?></th>
+
+                <th scope="col" style="width: 20%"><?php echo $this->translate("Descricao") ?></th>
+                <th scope="col" style="width: 15%"><?php echo $this->translate("Fluxo") ?></th>
+
+                <th scope="col" style="width: 5%"><?php echo $this->translate("Tipo") ?></th>
+                <th scope="col" style="width: 15%"><?php echo $this->translate("Valor") ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php $lancamentos = $this->lancamentosTable->listLancamentos()?>
+            <?php foreach ($lancamentos as $dados) : ?>
+
+
+            <?php ($dados['valor'] < 0) ? $styleValor = "style='color:red'" : $styleValor = "style='color:black'" ?>
+
+
+            <tr class="linha" id="<?php echo $dados['id'] ?>">
+                <td><?php echo $dados['id'] ?></td>
+                <td><?php echo DateService::DateEngToBr($dados['data_lancamento']) ?></td>
+                <td><?php echo $dados['centrocusto'] ?></td>
+                <td><?php echo $dados['banco'] ?></td>
+                <td><?php echo $dados['agencia'] ?></td>
+                <td><?php echo $dados['conta'] ?></td>
+
+
+                <td><?php echo $dados['descricao'] ?></td>
+                <td><?php echo $dados['fluxo_codigo'] . '-' . $dados['fluxo'] ?></td>
+                <td><?php echo $dados['tipo'] ?></td>
+                <td <?php echo $styleValor ?>><?php echo NumberService::toMoney($dados['valor'],2,null,true) ?></td>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+    <?php echo $this->formList->pagination ?>
+</div>
+
+
+<?php $this->parts("list-modal-options"); ?>
+
+<script>
+    $(document).ready(function () {
+        $('.linha').click(function () {
+
+            $(document).ready(function () {
+                $('.linha').click(function () {
+
+                    var id = this.id;
+
+
+                    $('#edit').attr({
+                        href: "<?php echo APP_PATH . '/lancamentos/edit/?id=' ?>" + id
+                    })
+                    $('#delete').attr({
+                        href: "<?php echo APP_PATH . '/lancamentos/delete/?id=' ?>" + id
+                    })
+                    $("#btn-modal").click();
+
+                })
+            })
+        })
+    })
+</script>
+

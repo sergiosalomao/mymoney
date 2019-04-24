@@ -1,0 +1,60 @@
+<div class="box-window">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col" style="width: 30%"><?php echo $this->translate("Usuario") ?></th>
+            <th scope="col" style="width: 30%"><?php echo $this->translate("Email") ?></th>
+            <th scope="col" style="width: 30%"><?php echo $this->translate("Tipo") ?></th>
+            <th scope="col" colspan="2" style="text-align: center"><?php echo $this->translate("Acoes") ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($this->dados as $dados) : ?>
+            <tr>
+                <td><?php echo $dados['id'] ?></td>
+                <td><?php echo $dados['nome'] ?></td>
+                <td><?php echo $dados['email'] ?></td>
+                <td><?php echo $dados['tipo'] ?></td>
+                <td style="text-align: center"><a href="<?php echo APP_PATH . '/usuarios/edit/?id=' . $dados['id'] ?>"
+                                                  class="btn btn-outline-warning btn-sm"
+                                                  data-toggle="tooltip" data-placement="left"
+                                                  title="<?php echo $this->translate("Editar") ?>"><i
+                                class="fa fa-fw fa-edit"></i></a></td>
+                <td style="text-align: center">
+                    <button
+
+                            id="<?php echo $dados['id'] ?>"
+                            class="delete btn btn-outline-danger btn-sm"
+                            data-toggle="tooltip" data-placement="left"
+                            title="<?php echo $this->translate("Apagar") ?>"><i
+                                class="fa fa-fw fa-edit"></i></button>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php echo $this->formList->pagination ?>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.delete').click(function () {
+            var id = this.id;
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo APP_PATH . '/usuarios/delete/'?>',
+                data: {id: id},
+                dataType: 'json',
+                success: function (data) {
+                    if (data.erro === 0) {
+                        window.location.href = "<?php echo APP_PATH . '/usuarios/'?>";
+                    } else if (data.erro === 1) {
+                        alert("Nenhum erro encontrado");
+                    }
+
+                }
+            })
+        });
+    });
+</script>

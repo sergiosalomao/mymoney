@@ -1,0 +1,15 @@
+<div class="box-window">
+    <?php echo $this->formList->titulo ?>
+    <div class="row">
+        <div class="col-sm-8 ">
+
+            <nav class="navbar navbar-light">
+                <a href="<?php echo APP_PATH . '/usuarios/create/' ?>">
+                    <?php echo $this->formList->btnAdd ?>
+                </a>
+            </nav>
+        </div>
+        <div class="col-sm-4 ">
+            <?php echo $this->formList->inputSearch ?>
+        </div>
+    </div>

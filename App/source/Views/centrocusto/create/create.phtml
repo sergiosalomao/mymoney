@@ -1,0 +1,17 @@
+<div class="box-window">
+    <?php echo $this->formCreate->titulo ?>
+    <form action="<?php echo APP_PATH . '/centro-custo/save/' ?>" method="post">
+        <div class="form-row">
+            <?php echo $this->formCreate->id ?>
+            <div class="form-group col-md-12">
+                <?php echo $this->formCreate->descricao ?>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <?php echo $this->formCreate->btnSalvar ?>
+                <a href="<?php echo APP_PATH . '/centro-custo/' ?>"><?php echo $this->formCreate->btnFechar ?></a>
+            </div>
+        </div>
+    </form>
+</div>

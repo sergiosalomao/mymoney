@@ -1,0 +1,35 @@
+<div class="box-window">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col" style="width: 5%">id</th>
+            <th scope="col" style="width: 5%"><?php echo $this->translate("Idioma") ?></th>
+            <th scope="col" style="width: 50%"><?php echo $this->translate("Chave") ?></th>
+            <th scope="col" style="width: 50%"><?php echo $this->translate("Descricao") ?></th>
+            <th scope="col" colspan="2" style="text-align: center"><?php echo $this->translate("Acoes") ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($this->dados as $dados) : ?>
+            <tr>
+                <td><?php echo $dados['id'] ?></td>
+
+                <td><?php echo $dados['idioma']?></td>
+
+                <td><?php echo $dados['chave'] ?></td>
+                <td><?php echo $dados['traducao'] ?></td>
+                <td style="text-align: center"><a href="<?php echo APP_PATH . '/traducoes/edit/?id=' . $dados['id'] ?>"
+                                                  class="btn btn-outline-warning btn-sm"
+                                                  data-toggle="tooltip" data-placement="left" title="<?php echo $this->translate("Editar")?>"><i
+                                class="fa fa-fw fa-edit"></i></a></td>
+                <td style="text-align: center"><a
+                            href="<?php echo APP_PATH . '/traducoes/delete/?id=' . $dados['id'] ?>"
+                            class="btn btn-outline-danger btn-sm"
+                            data-toggle="tooltip" data-placement="left" title="<?php echo $this->translate("Apagar")?>"><i
+                                class="fa fa-fw fa-edit"></i></a></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php echo $this->formList->pagination ?>
+</div>

@@ -1,0 +1,79 @@
+<div class="box-window">
+    <table id="tabela" class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col"style="width: 10%">id</th>
+            <th scope="col" style="width: 30%"><?php echo $this->translate("Banco") ?></th>
+            <th scope="col" style="width: 15%"><?php echo $this->translate("Agencia") ?></th>
+            <th scope="col" style="width: 15%"><?php echo $this->translate("Conta") ?></th>
+            <th scope="col" style="width: 15%"><?php echo $this->translate("Tipo") ?></th>
+            <th scope="col" colspan="2" style="text-align: center"><?php echo $this->translate("Acoes") ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($this->dados as $dados) : ?>
+            <tr>
+                <td><?php echo $dados['id'] ?></td>
+                <td><?php echo $dados['banconome'] ?></td>
+                <td><?php echo $dados['agencia'] ?></td>
+                <td><?php echo $dados['conta'] ?></td>
+                <?php
+
+
+                switch ($dados['tipo']){
+                    case 'C':
+                        $dados['tipo'] = 'Corrente';
+                        break;
+                    case 'P':
+                        $dados['tipo'] = 'Poupanca';
+                        break;
+                    case 'CA':
+                        $dados['tipo'] = 'Carteira';
+                        break;
+                }
+                
+                ?>
+
+                <td><?php echo $dados['tipo'] ?></td>
+                <td style="text-align: center"><a href="<?php echo APP_PATH . '/contas/edit/?id=' . $dados['id'] ?>"
+                                                  class="btn btn-outline-warning btn-sm"
+                                                  data-toggle="tooltip" data-placement="left"
+                                                  title="<?php echo $this->translate("Editar") ?>"><i
+                                class="fa fa-fw fa-edit"></i></a></td>
+                <td style="text-align: center">
+                    <button
+
+                            id="<?php echo $dados['id'] ?>"
+                            class="delete btn btn-outline-danger btn-sm"
+                            data-toggle="tooltip" data-placement="left"
+                            title="<?php echo $this->translate("Apagar") ?>"><i
+                                class="fa fa-fw fa-edit"></i></button>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php echo $this->formList->pagination ?>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.delete').click(function () {
+            var id = this.id;
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo APP_PATH . '/contas/delete/'?>',
+                data: {id: id},
+                dataType: 'json',
+                success: function (data) {
+                    if(data.erro === 0) {
+                        window.location.href = "<?php echo APP_PATH . '/contas/'?>";
+                    } else if(data.erro === 1) {
+                        alert("Nenhum erro encontrado");
+                    }
+
+                }
+            })
+        });
+    });
+</script>

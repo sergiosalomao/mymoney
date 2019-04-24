@@ -1,0 +1,37 @@
+<!-- Button trigger modal -->
+<button id="btn-modal" data="" type="button" class="btn btn-primary" data-toggle="modal" data-target="#janelaModal" hidden>
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="janelaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <?php echo $this->formOptions->tituloModal ?>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-5">
+                        <a id="edit" href=""><?php echo $this->formOptions->btnEditar ?></a>
+                        <a id="delete" href=""><?php echo $this->formOptions->btnDeletar ?></a>
+                    </div>
+                    <div class="col-5">
+
+                    </div>
+                    <div class="col-2" style="align-items: flex-end">
+                        <a href="<?php echo APP_PATH . '/lancamentos/' ?>"><?php echo $this->formOptions->btnFechar ?></a>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+

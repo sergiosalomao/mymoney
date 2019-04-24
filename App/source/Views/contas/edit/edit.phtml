@@ -1,0 +1,28 @@
+<div class="box-window">
+    <?php echo $this->formEdit->titulo ?>
+    <form action="<?php echo APP_PATH . '/contas/save/' ?>" method="post">
+        <div class="form-row">
+            <?php echo $this->formEdit->id ?>
+            <div class="form-group col-md-6">
+                <?php echo $this->formEdit->banco_id ?>
+            </div>
+            <div class="form-group col-md-6">
+                <?php echo $this->formEdit->tipo ?>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <?php echo $this->formEdit->agencia ?>
+            </div>
+            <div class="form-group col-md-6">
+                <?php echo $this->formEdit->conta ?>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <?php echo $this->formEdit->btnSalvar ?>
+                <a href="<?php echo APP_PATH . '/contas/' ?>"> <?php echo $this->formEdit->btnFechar ?></a>
+            </div>
+        </div>
+    </form>
+</div>

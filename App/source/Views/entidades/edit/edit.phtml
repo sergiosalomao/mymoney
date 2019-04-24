@@ -1,0 +1,17 @@
+<div class="box-window">
+    <?php echo $this->formEdit->titulo ?>
+    <form action="<?php echo APP_PATH . '/entidades/save/' ?>" method="post">
+        <div class="form-row">
+            <?php echo $this->formEdit->id ?>
+            <div class="form-group col-md-12">
+                <?php echo $this->formEdit->nome ?>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <?php echo $this->formEdit->btnSalvar ?>
+                <a href="<?php echo APP_PATH . '/entidades/' ?>"> <?php echo $this->formEdit->btnFechar ?></a>
+            </div>
+        </div>
+    </form>
+</div>
